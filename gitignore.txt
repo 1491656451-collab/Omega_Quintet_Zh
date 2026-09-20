@@ -1,0 +1,24 @@
+# 发布包走 Releases，不进版本库
+*.zip
+*.7z
+*.rar
+
+# 游戏数据与中间产物
+*.bra
+*.oqp3
+*.oqpatch
+*.oqundo*
+*.ffu
+*.dds
+*.dmp
+*.bin
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
