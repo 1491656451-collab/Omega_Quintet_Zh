@@ -100,6 +100,23 @@ Noto Sans CJK 采用 [SIL Open Font License 1.1](https://openfontlicense.org/)�
 
 逆向与制作过程见 [`docs/制作过程.md`](docs/制作过程.md)。
 
+## 源码与工具链
+
+[`src/`](src/) 里是全套东西：`.bra` / GBNL / CL3 / GSTL / 点阵字体的解析器、
+构建脚本、九道校验闸，以及全部译文（菜单 410 + 系统 699 + 数据库说明文 8,396 +
+名称 1,869 + 剧情 11,039 + DLC 339 条）。
+
+**仓库不含游戏的英文原文** —— 那是游戏本体的内容。构建前先从你自己那份游戏里抽：
+
+```bash
+cd src
+python3 extract_en.py "D:/SteamLibrary/steamapps/common/Omega Quintet"
+python3 check_fmt.py          # 22,606 条译文的格式符校验，应当全绿
+python3 build_system.py "<原版 System.bra>" out/System.bra
+```
+
+详见 [`src/README.md`](src/README.md)。
+
 ## 版本历史
 
 | 版本 | 内容 |
