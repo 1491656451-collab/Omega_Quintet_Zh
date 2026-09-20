@@ -48,11 +48,35 @@ Steam 版，`OmegaQuintet.exe` MD5 `5ab6f76d830e68266bdea6a2f790ed96`。
 
 | 位置 | 原因 |
 |---|---|
-| 设置界面部分文案、存档/读档文本、Quit to Desktop、五句教程提示、DLC 礼包表 | 这些是 PC 移植版**写死在 `OmegaQuintet.exe` 里**的，而 exe 外面套着 SteamStub，校验范围包含 `.rdata` —— 改一个字节游戏就起不来（实测两次，报 `Application load error 3:0000065432`） |
+| 设置界面部分文案、存档/读档文本、Quit to Desktop、五句教程提示、DLC 礼包表 | 这些是 PC 移植版**写死在 `OmegaQuintet.exe` 里**的，而 exe 外面套着 SteamStub，校验范围包含 `.rdata` —— 改一个字节游戏就起不来（实测两次，报 `Application load error 3:0000065432`）。**可以用下面的可选补充包在运行时解决** |
 | `BREAK` / `LIVE` / `Chain!!` / `Turn Back!!` / `Wait Damage!!` / `Hit` / `Total Damage` / `Magnetic Field` / `Support Rate` / `Play Time` 等 | 美术字横幅与风格化标签，改成中文反而不好看，按观感保留 |
 | `Chara select` / `Main Mission` / `Arcanium` / `collect!!` / `ATTACK!` 等 | 在 `grSystemWindow.dds` 上，未处理 |
 | 地图光点拾取横幅上的 DLC 道具名 | 同样来自 exe 里的礼包表，改不了 |
 | `HP` `SP` `EP` `LV` `EXP` `MAX` `Coins` `PV`、指北针 `N/E/S/W` | 按惯例保留 |
+
+## 可选：PC 汉化补充包（exe 内文本）
+
+上表第一行那些「改不了」的 exe 内文本，可以用一个**可选的运行时补充包**解决：
+`欧米茄五重奏_PC汉化补充.zip`，同样在 [Releases](../../releases)。
+
+它是一个代理 `dinput8.dll`，在游戏启动时把 exe 里写死的 **45 条界面文本**
+（设置七项与说明文、窗口/无边框/全屏、启用/禁用、确定/取消、按键重映射提示、
+全部存读档文本、退出至桌面、五句教程提示）和 **37 个 DLC 礼包的名称与说明**
+在内存里换成中文。装法就是把包里两个文件丢进游戏根目录，卸载就是删掉它们。
+
+> ### ⚠ 装之前请读完
+>
+> - **没有经过实机验证**，当前这个版本一次都没真正跑过。
+> - 它会往游戏进程内存里写数据：转发 `DirectInput8Create` → 读 `oq_exe_dlc_zh.tsv`
+>   → `VirtualAlloc` 放中文串 → 用 `VirtualProtect` 改 exe `.data` 段里
+>   **45 + 74 个写死地址**的指针。没有网络连接，没有自启，不碰游戏目录以外的文件。
+> - **但它没有源码。** 这是个编译好的二进制，上面那些行为是反汇编逐条读出来的，
+>   **任何人都无法从源码重新构建它**。不接受这一点就别装 —— 主补丁不依赖它。
+> - **杀毒软件可能报警。**「游戏目录里放一个同名系统 DLL」+「往别的进程内存里写东西」
+>   正好是 DLL 劫持和修改器的典型特征，报警是合理的启发式判断。
+> - 地图光点拾取横幅上的 DLC 道具名**仍然是英文**。原先有一套运行时内存扫描来处理它，
+>   但那套扫描会让游戏在启动后十秒内崩溃（有两份崩溃转储为证），已经关掉。
+> - 只对 `OmegaQuintet.exe` MD5 `5ab6f76d830e68266bdea6a2f790ed96` 有效，游戏一更新就得删掉。
 
 ## 中文字体
 
