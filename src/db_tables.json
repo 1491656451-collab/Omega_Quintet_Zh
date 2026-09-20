@@ -1,0 +1,104 @@
+{
+ "stArchive": [
+  8,
+  40
+ ],
+ "stBgm": [
+  8
+ ],
+ "stBroadcast": [
+  24
+ ],
+ "stCharaMonster": [
+  1168
+ ],
+ "stCollect": [
+  8,
+  48
+ ],
+ "stDecision": [
+  264
+ ],
+ "stDisc": [
+  264
+ ],
+ "stEffect": [
+  8
+ ],
+ "stFieldObject": [
+  56
+ ],
+ "stGallery": [
+  8,
+  40
+ ],
+ "stGalleryPlayer": [
+  8
+ ],
+ "stHelp": [
+  16,
+  32,
+  48,
+  64,
+  80,
+  96,
+  112,
+  128,
+  144,
+  160,
+  176,
+  192,
+  208,
+  224,
+  240
+ ],
+ "stItem": [
+  352
+ ],
+ "stMakeup": [
+  8
+ ],
+ "stNpc": [
+  8,
+  136,
+  144,
+  152,
+  192,
+  208,
+  224
+ ],
+ "stPvCamera": [
+  32
+ ],
+ "stPvDance": [
+  24
+ ],
+ "stPvMap": [
+  16
+ ],
+ "stPvSong": [
+  8,
+  16,
+  24,
+  32
+ ],
+ "stQuest": [
+  8,
+  16,
+  240
+ ],
+ "stRequest": [
+  24,
+  32,
+  40,
+  48,
+  56
+ ],
+ "stSkill": [
+  328
+ ],
+ "stTakeOver": [
+  8,
+  24
+ ]
+}
